@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding value-style="attribute">
+  <mapping class="netty.http.xml.model.Order" name="order">
+    <value name="order-number" field="orderNumber"/>
+    <structure field="customer" usage="optional" name="customer">
+      <value name="customer-number" field="customerNumber"/>
+      <value style="element" name="first-name" field="firstName" usage="optional"/>
+      <value style="element" name="last-name" field="lastName" usage="optional"/>
+      <collection field="middleNames" usage="optional" factory="org.jibx.runtime.Utility.arrayListFactory"/>
+    </structure>
+    <structure field="billTo" usage="optional" name="bill-to">
+      <value style="element" name="street1" field="street1" usage="optional"/>
+      <value style="element" name="street2" field="street2" usage="optional"/>
+      <value style="element" name="city" field="city" usage="optional"/>
+      <value style="element" name="state" field="state" usage="optional"/>
+      <value style="element" name="post-code" field="postCode" usage="optional"/>
+      <value style="element" name="country" field="country" usage="optional"/>
+    </structure>
+    <structure field="shipping" usage="optional" name="shipping">
+      <value name="id" field="id" usage="optional"/>
+      <value style="element" name="description" field="description" usage="optional"/>
+    </structure>
+    <structure field="shipTo" usage="optional" name="ship-to">
+      <value style="element" name="street1" field="street1" usage="optional"/>
+      <value style="element" name="street2" field="street2" usage="optional"/>
+      <value style="element" name="city" field="city" usage="optional"/>
+      <value style="element" name="state" field="state" usage="optional"/>
+      <value style="element" name="post-code" field="postCode" usage="optional"/>
+      <value style="element" name="country" field="country" usage="optional"/>
+    </structure>
+    <value name="total" field="total" usage="optional"/>
+    <collection field="items" usage="optional" factory="org.jibx.runtime.Utility.arrayListFactory"/>
+  </mapping>
+</binding>
