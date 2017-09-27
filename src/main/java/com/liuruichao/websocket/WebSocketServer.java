@@ -16,7 +16,7 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 import org.apache.log4j.Logger;
 
 /**
- * 在线聊天
+ * 在线聊天（聊天室）
  *
  * @author liuruichao
  * Created on 2015-12-16 14:54
@@ -55,7 +55,7 @@ public class WebSocketServer {
     }
 
     public static void main(String[] args) {
-        String host = "127.0.0.1";
+        String host = "192.168.1.132";
         int port = 9999;
         WebSocketServer server = new WebSocketServer();
         server.run(host, port);
