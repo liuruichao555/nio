@@ -43,6 +43,8 @@ import java.util.Date;
 public class WebSocketServer {
     private int port = 9999;
 
+    private String host = "192.168.1.132";
+
     public void run() {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -61,7 +63,7 @@ public class WebSocketServer {
                     });
             Channel channel = b.bind(port).sync().channel();
             System.out.println("Web socket server started at port " + port + ".");
-            System.out.println("Open your browser and navigate to http://localhost:" + port + "/");
+            System.out.println("Open your browser and navigate to http://" + host + ":" + port + "/");
             channel.closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +107,7 @@ public class WebSocketServer {
                 return;
             }
             // 构造握手响应返回, 本机测试
-            WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:9999/websocket", null, false);
+            WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(String.format("ws://%s:%s/websocket", host, port), null, false);
             handshaker = wsFactory.newHandshaker(req);
             if (handshaker == null) {
                 WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx.channel());
